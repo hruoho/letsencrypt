@@ -23,12 +23,12 @@ echo "Creating certificates for: $NGINX_DOMAINS"
 # Replace domains
 sed -i "s/\$DOMAINS/$NGINX_DOMAINS/g" /etc/nginx/nginx.conf
 
-# Start nginx
+# # Start nginx
 echo "- start nginx"
 service nginx start
 
 # Run LetsEncrypt
-echo "- start letsencrypt"
+echo "- start letsencrypt for ${DOMAINS}"
 ${LE_BIN} certonly --webroot -w /var/www/acme-certs ${LE_DOMAINS} --email ${EMAIL_ADDRESS} --agree-tos
 
 # Copy created certs

@@ -1,20 +1,18 @@
 # Based on Debian Jessie
-FROM debian:jessie
+FROM ubuntu:latest
 
 # Enviroments
-ENV DEBIAN_FRONTEND noninteractive
 ENV LE_PATH /srv/letsencrypt
-ENV LE_BIN /srv/letsencrypt/letsencrypt-auto
+ENV LE_BIN letsencrypt
 
 # Install nginx
 RUN apt-get update && \
-  apt-get install -y git nginx
+  apt-get install -y nginx letsencrypt
 
 # Add overrided nginx configuration & default site
 ADD nginx.conf /etc/nginx/nginx.conf
 
 # Install LetsEncrypt to /srv/letsencrypt
-RUN mkdir $LE_PATH && git clone https://github.com/letsencrypt/letsencrypt $LE_PATH
 RUN $LE_BIN --help > /dev/null
 
 # Make folders for certificates
