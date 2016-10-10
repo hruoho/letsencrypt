@@ -1,4 +1,3 @@
-# Based on Debian Jessie
 FROM ubuntu:latest
 
 # Enviroments
