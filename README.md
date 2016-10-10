@@ -1,7 +1,6 @@
+Forked from [dockette/letsencrypt](https://github.com/dockette/letsencrypt)
+---
 # LetsEncrypt
-
-[![Docker Stars](https://img.shields.io/docker/stars/dockette/letsencrypt.svg?style=flat)](https://hub.docker.com/r/dockette/letsencrypt/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/dockette/letsencrypt.svg?style=flat)](https://hub.docker.com/r/dockette/letsencrypt/)
 
 Create 90 days SSL certificates for given domains.
 
@@ -9,7 +8,7 @@ Create 90 days SSL certificates for given domains.
 
 Container creates simple Nginx server listening on port 80 and waiting for letsencrypt validation.
 
-It handles only requests to `mydomain.com/.well-known`, all other requests are forbidden. 
+It handles only requests to `mydomain.com/.well-known`, all other requests are forbidden.
 
 ```
 server {
@@ -30,7 +29,7 @@ server {
 
 ```sh
 docker run \
-    -p 80:80 \ 
+    -p 80:80 \
     -v /srv/certs/mydomain.com:/var/www/certs \
     --name le \
     -e DOMAINS='mydomain.com www.mydomain.com' \
@@ -41,4 +40,3 @@ docker run \
 You can add `-it` for interactive shell.
 
 After that you will have copies of certificates in your `/srv/certs/mydomain.com/` folder.
-
